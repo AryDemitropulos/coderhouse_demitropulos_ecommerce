@@ -8,8 +8,6 @@ import CartButton from "./CartButton";
 import UserButton from "./UserButton";
 
 export default function NavBar() {
-  const pages = ["Products", "Pricing", "Blog"];
-
   return (
     <Box>
       <AppBar position="static">
@@ -28,7 +26,6 @@ export default function NavBar() {
             </Button>
           </Box>
           <Box>
-            <CartButton />
             <UserButton />
           </Box>
         </Toolbar>
