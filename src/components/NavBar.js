@@ -4,7 +4,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-import CartButton from "./CartButton";
+import CartWidget from "./CartWidget";
 import UserButton from "./UserButton";
 
 export default function NavBar() {
@@ -26,6 +26,7 @@ export default function NavBar() {
             </Button>
           </Box>
           <Box>
+            <CartWidget />
             <UserButton />
           </Box>
         </Toolbar>
