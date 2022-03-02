@@ -7,6 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Skeleton } from "@mui/material";
+import ItemCount from "./ItemCount";
 
 const Item = (props) => {
   const product = props.product || {};
@@ -37,7 +38,7 @@ const Item = (props) => {
         )}
       </CardContent>
       <CardActions>
-        <Button size="small">Add</Button>
+        <ItemCount />
       </CardActions>
     </Card>
   );

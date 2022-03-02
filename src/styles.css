@@ -25,3 +25,12 @@ html,
   align-items: center;
   justify-self: center;
 }
+
+.d-flex-center-sb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.w100 {
+  width: 100%;
+}
