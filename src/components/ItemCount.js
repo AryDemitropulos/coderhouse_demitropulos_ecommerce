@@ -5,7 +5,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
 const ItemCount = (props) => {
-  const stock = props.stock || 5;
+  const stock = props.stock || 0;
   const initial = props.initial || 0;
   const [count, setCount] = useState(initial);
 

@@ -16,9 +16,9 @@ const Item = (props) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       {img ? (
-        <CardMedia component="img" alt={name} height="140" image={img} />
+        <CardMedia component="img" alt={name} height="230" image={img} />
       ) : (
-        <Skeleton variant="rectangular" height={140} />
+        <Skeleton variant="rectangular" height={230} />
       )}
 
       <CardContent>
@@ -38,7 +38,7 @@ const Item = (props) => {
         )}
       </CardContent>
       <CardActions>
-        <ItemCount />
+        <ItemCount stock={stock} initial={0} />
       </CardActions>
     </Card>
   );
