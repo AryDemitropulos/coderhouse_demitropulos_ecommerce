@@ -4,9 +4,7 @@ import { Box, IconButton, Typography } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
-const ItemCount = (props) => {
-  const stock = props.stock || 0;
-  const initial = props.initial || 0;
+const ItemCount = ({ stock = 0, initial = 1 }) => {
   const [count, setCount] = useState(initial);
 
   const onAdd = () => {
@@ -23,7 +21,7 @@ const ItemCount = (props) => {
         <IconButton
           color="secondary"
           aria-label="remove an item"
-          disabled={count === 0}
+          disabled={count <= 0}
           onClick={onRemove}
         >
           <RemoveCircleOutlineIcon />
@@ -35,7 +33,7 @@ const ItemCount = (props) => {
           color="secondary"
           aria-label="add an item"
           onClick={onAdd}
-          disabled={count === stock}
+          disabled={count >= stock}
         >
           <AddCircleOutlineIcon />
         </IconButton>
