@@ -1,23 +1,19 @@
 import React from "react";
-import { Box, Container, Divider } from "@mui/material";
-import ItemListContainer from "./ItemListContainer.js";
-import LandingLogo from "./LandingLogo.js";
-import ItemDetailContainer from "./ItemDetailContainer.js";
+import { Container } from "@mui/material";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "../pages/HomePage";
+import ItemDetailPage from "../pages/ItemDetailPage";
+import ItemListContainer from "./itemList/ItemListContainer";
 
 function Main() {
-  const greeting = "Bienvenidos a la página de E-Commerce";
   return (
     <>
       <Container maxWidth="lg" className="main-container">
-        <Box className="d-flex-col-center">
-          <LandingLogo />
-          <ItemListContainer greeting={greeting} />
-        </Box>
-      </Container>
-      <Container maxWidth="lg" className="main-container">
-        <Box className="d-flex-col-center">
-          <ItemDetailContainer />
-        </Box>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/category/:category" element={<ItemListContainer />} />
+          <Route path="items/:id" element={<ItemDetailPage />} />
+        </Routes>
       </Container>
     </>
   );

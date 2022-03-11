@@ -10,6 +10,11 @@ html,
   min-height: 100vh;
 }
 
+a {
+  text-decoration: none;
+  color: unset;
+}
+
 #root {
   display: flex;
   flex-direction: column;
@@ -33,4 +38,10 @@ html,
 }
 .w100 {
   width: 100%;
+}
+
+.category-chip {
+  margin-right: 8px;
+  margin-top: 8px;
+  cursor: pointer;
 }

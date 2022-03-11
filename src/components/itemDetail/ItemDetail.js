@@ -1,14 +1,7 @@
-import {
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  Skeleton,
-} from "@mui/material";
 import React from "react";
-import Image from "./itemDetail/Image";
-import InfoPanel from "./itemDetail/InfoPanel";
+import { Box, Card, Skeleton } from "@mui/material";
+import Image from "./Image";
+import InfoPanel from "./InfoPanel";
 
 const ItemDetail = ({ item = {} }) => {
   const { name, img, id } = item;

@@ -1,11 +1,9 @@
 import React from "react";
 import { Box, CardContent, Typography } from "@mui/material";
-import AddToCart from "../AddToCart";
-import Stats from "./Stats";
 import ItemCount from "../ItemCount";
 
 const InfoPanel = ({ item }) => {
-  const { name, price = 0, description, stock, stats } = item;
+  const { name, price = 0, description, stock } = item;
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
       <CardContent sx={{ flex: "1 0 auto" }}>
