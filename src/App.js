@@ -1,9 +1,13 @@
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
 import NavBar from "./components/navbar/NavBar";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import React from "react";
+
 import "./styles.css";
-import { BrowserRouter } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -11,6 +15,7 @@ function App() {
       <NavBar />
       <Main />
       <Footer />
+      <ToastContainer />
     </BrowserRouter>
   );
 }

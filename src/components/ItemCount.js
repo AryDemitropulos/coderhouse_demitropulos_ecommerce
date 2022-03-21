@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Box, IconButton, Typography } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
-const ItemCount = ({ stock = 0, initial = 1 }) => {
+const ItemCount = ({ stock = 0, initial = 1, onIncrement = () => {} }) => {
   const [count, setCount] = useState(initial);
 
   const onAdd = () => {
     if (count < stock) setCount(count + 1);
   };
   const onRemove = () => {
-    if (count > 0) setCount(count - 1);
+    if (count > initial) setCount(count - 1);
   };
+
+  useEffect(() => {
+    onIncrement(count);
+  }, [count, onIncrement]);
 
   return (
     <Box className="d-flex-center-sb w100">
