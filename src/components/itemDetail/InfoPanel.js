@@ -18,7 +18,6 @@ const InfoPanel = ({ item }) => {
 
   const onAddToCart = () => {
     setAddedToCart(true);
-    console.log("Se agregaron estos items", itemsCount);
     toast.success(`${itemsCount} items were added to cart`, {
       position: "top-right",
       autoClose: 3000,
