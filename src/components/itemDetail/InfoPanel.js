@@ -1,33 +1,52 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Box, Button, CardContent, Typography } from "@mui/material";
+
 import ItemCount from "../ItemCount";
 import AddToCart from "../AddToCart";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { successNotification } from "../../services/notificationService";
+import { context } from "../../context/CartContext";
+import Conditional from "../Conditional";
 
 const InfoPanel = ({ item }) => {
   const { name, price = 0, description, stock } = item;
   const [addedToCart, setAddedToCart] = useState(false);
   const [itemsCount, setItemCount] = useState(0);
+  const [initial, setInitial] = useState(1);
+  const [quantityInCart, setQuantityInCart] = useState(0);
 
-  const navigate = useNavigate();
+  const { addItem, getQuantityOfProduct, updateCartProduct } =
+    useContext(context);
 
   const onIncrement = (count) => {
     setItemCount(count);
   };
 
   const onAddToCart = () => {
+    successNotification(`${itemsCount} items were added to cart`);
+    addItem(item, itemsCount);
     setAddedToCart(true);
-    toast.success(`${itemsCount} items were added to cart`, {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
   };
+
+  const getQuantity = () => {
+    return getQuantityOfProduct(item.id);
+  };
+
+  const updateCart = () => {
+    updateCartProduct(item, itemsCount);
+  };
+
+  useEffect(() => {
+    setQuantityInCart(getQuantityOfProduct(item.id));
+  }, [getQuantityOfProduct]);
+
+  useEffect(() => {
+    if (quantityInCart > 0) {
+      setInitial(quantityInCart);
+    } else {
+      setInitial(1);
+    }
+  }, [quantityInCart]);
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -58,13 +77,36 @@ const InfoPanel = ({ item }) => {
             </>
           ) : (
             <>
+              <Conditional condition={getQuantity()}>
+                <Typography
+                  variant="body1"
+                  color="warning.main"
+                  component="div"
+                >
+                  You have a total of <strong>{getQuantity()}</strong> items in
+                  your cart
+                </Typography>
+              </Conditional>
+
               <ItemCount
                 stock={stock}
-                initial={1}
+                initial={initial}
+                min={getQuantity() ? 0 : 1}
                 onIncrement={onIncrement}
                 disabled={addedToCart}
               />
-              <AddToCart onAdd={onAddToCart} />
+              <Conditional
+                condition={getQuantity()}
+                elseElement={<AddToCart onAdd={onAddToCart} />}
+              >
+                <Button
+                  variant="contained"
+                  onClick={updateCart}
+                  color="warning"
+                >
+                  Update Cart
+                </Button>
+              </Conditional>
             </>
           )}
         </Box>

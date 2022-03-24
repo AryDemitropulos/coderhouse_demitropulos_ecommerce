@@ -52,3 +52,22 @@ a {
 .mt15 {
   margin-top: 15px;
 }
+.py15 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.py30 {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.px15 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.px30 {
+  padding-left: 30px;
+  padding-right: 30px;
+}

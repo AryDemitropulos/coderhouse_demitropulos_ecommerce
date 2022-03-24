@@ -8,15 +8,18 @@ import Footer from "./components/Footer";
 
 import "./styles.css";
 import "react-toastify/dist/ReactToastify.css";
+import CartContext from "./context/CartContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Main />
-      <Footer />
-      <ToastContainer />
-    </BrowserRouter>
+    <CartContext>
+      <BrowserRouter>
+        <NavBar />
+        <Main />
+        <Footer />
+        <ToastContainer />
+      </BrowserRouter>
+    </CartContext>
   );
 }
 

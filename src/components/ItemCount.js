@@ -4,15 +4,17 @@ import { Box, IconButton, Typography } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
-const ItemCount = ({ stock = 0, initial = 1, onIncrement = () => {} }) => {
+const ItemCount = ({ stock = 0, initial = 1, onIncrement = () => {}, min }) => {
   const [count, setCount] = useState(initial);
-
   const onAdd = () => {
     if (count < stock) setCount(count + 1);
   };
   const onRemove = () => {
-    if (count > initial) setCount(count - 1);
+    if (count > min) setCount(count - 1);
   };
+  useEffect(() => {
+    setCount(initial);
+  }, [initial]);
 
   useEffect(() => {
     onIncrement(count);
