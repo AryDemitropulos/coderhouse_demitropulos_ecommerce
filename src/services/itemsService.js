@@ -17,7 +17,7 @@ function getAll() {
 function getByCategory(category = "") {
   const queryCategory = query(
     collection(dbFirebase, collectionName),
-    where("category", "==", category)
+    where("categories", "array-contains", category)
   );
   return getDocs(queryCategory);
 }
