@@ -13,9 +13,14 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     setProducts(loadingProducts);
-    getItems(category).then((data) => {
-      setProducts(data);
-    });
+    getItems(category)
+      .then((res) => {
+        console.log(res);
+        setProducts(res.docs.map((p) => ({ ...p.data(), id: p.id })));
+      })
+      .catch((error) => {
+        console.log("Error loading products", error);
+      });
   }, [category]);
 
   return (

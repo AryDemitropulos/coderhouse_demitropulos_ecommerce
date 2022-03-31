@@ -2,7 +2,7 @@ import { Grid, Typography } from "@mui/material";
 import Conditional from "../Conditional";
 import Item from "./Item";
 
-const ItemList = ({ products, selectedCategory }) => {
+const ItemList = ({ products = [], selectedCategory }) => {
   return (
     <>
       <Conditional condition={selectedCategory}>

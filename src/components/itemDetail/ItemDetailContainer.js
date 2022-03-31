@@ -8,8 +8,8 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    getItem(id).then((data) => {
-      setItemSeleccionado(data);
+    getItem(id).then((res) => {
+      setItemSeleccionado({ ...res.data(), id: res.id });
     });
   }, [id]);
 
