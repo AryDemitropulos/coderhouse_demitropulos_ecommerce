@@ -1,15 +1,23 @@
 import { Box, Button, Typography, Card } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { context } from "../../context/CartContext";
 import Conditional from "../Conditional";
 import CartTable from "./CartTable";
 import CartEmpty from "./CartEmpty";
-import { newSale } from "../../services/salesService";
+import { newSale, getSale } from "../../services/salesService";
 import { successNotification } from "../../services/notificationService";
+import SaleInfoDialog from "./SaleInfoDialog";
 
 const CartContainer = () => {
   const { cart, getTotal, removeItem, cleanCart } = useContext(context);
   const [loading, setLoading] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [saleInfo, setSaleInfo] = useState();
+
+  useEffect(() => {
+    setOpenDialog(saleInfo !== undefined);
+    console.log("useEffect", saleInfo, openDialog);
+  }, [saleInfo]);
 
   const onFinishSale = () => {
     setLoading(true);
@@ -20,10 +28,20 @@ const CartContainer = () => {
       total: getTotal(),
     }).then(({ id }) => {
       successNotification("Sale added successfully! Purchase code: " + id);
-      cleanCart();
-      setLoading(false);
+      // cleanCart();
+      getSale(id).then((res) => {
+        setLoading(false);
+        setSaleInfo({ ...res.data(), id });
+        console.log("THEN del getSale", saleInfo, openDialog);
+      });
     });
   };
+
+  const handleClose = () => {
+    setOpenDialog(false);
+  };
+  console.log("RAW", openDialog);
+
   return (
     <>
       <Conditional condition={cart.length} elseElement={<CartEmpty />}>
@@ -46,6 +64,7 @@ const CartContainer = () => {
           </Box>
         </Card>
       </Conditional>
+      {openDialog && <SaleInfoDialog onClose={handleClose} sale={saleInfo} />}
     </>
   );
 };

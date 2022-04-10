@@ -18,7 +18,11 @@ const CartContext = ({ children }) => {
     if (isInCart(product.id)) {
       changeItemQuantity(product.id, quantity);
     } else {
-      addItemToCart({ product, quantity });
+      addItemToCart({
+        product,
+        quantity,
+        total: product.price * quantity,
+      });
     }
   };
 
@@ -42,14 +46,13 @@ const CartContext = ({ children }) => {
     setCart(newCart);
   };
 
+  const getTotalProduct = (product, quantity) => {
+    return product.price * quantity;
+  };
+
   const getTotal = (cartItem) => {
     return Number.parseFloat(
-      cart.reduce(
-        (previous, { product, quantity }) =>
-          Number.parseFloat(previous) +
-          Number.parseFloat(product.price * quantity),
-        0
-      )
+      cart.reduce((previous, { total }) => previous + total, 0)
     ).toFixed(2);
   };
 
