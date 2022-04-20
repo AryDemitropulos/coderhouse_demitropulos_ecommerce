@@ -1,3 +1,9 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/043d4cca-3c7e-440e-a419-5e6378fe0e65/deploy-status)](https://app.netlify.com/sites/kaleidoscopic-scone-77dd34/deploys)
+
+# Deployed site
+
+[https://kaleidoscopic-scone-77dd34.netlify.app](https://kaleidoscopic-scone-77dd34.netlify.app)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
