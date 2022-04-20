@@ -38,7 +38,7 @@ const InfoPanel = ({ item }) => {
 
   useEffect(() => {
     setQuantityInCart(getQuantityOfProduct(item.id));
-  }, [getQuantityOfProduct]);
+  }, [getQuantityOfProduct, item.id]);
 
   useEffect(() => {
     if (quantityInCart > 0) {

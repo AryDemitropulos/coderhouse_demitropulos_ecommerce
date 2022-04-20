@@ -46,10 +46,6 @@ const CartContext = ({ children }) => {
     setCart(newCart);
   };
 
-  const getTotalProduct = (product, quantity) => {
-    return product.price * quantity;
-  };
-
   const getTotal = (cartItem) => {
     return Number.parseFloat(
       cart.reduce((previous, { total }) => previous + total, 0)
