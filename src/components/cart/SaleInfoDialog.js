@@ -11,7 +11,6 @@ const SaleInfoDialog = ({ sale = {}, onClose = () => {} }) => {
     onClose();
   };
 
-  console.log("SaleInfoDialog", sale);
   return (
     <Dialog
       open={true}
@@ -24,6 +23,10 @@ const SaleInfoDialog = ({ sale = {}, onClose = () => {} }) => {
       </DialogTitle>
       <DialogContent>
         <Typography variant="h6">Sale code: {sale.id}</Typography>
+        <Typography variant="subtitle1">
+          Buyer: {sale.buyer.name + " " + sale.buyer.lastname}
+        </Typography>
+        <Typography variant="subtitle1">Email: {sale.buyer.email}</Typography>
         {sale.items.map((item, index) => (
           <Box className="d-flex-center-sb mt15" key="index">
             <Typography variant="body1" color="text.secondary">

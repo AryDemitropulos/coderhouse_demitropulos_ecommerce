@@ -10,6 +10,10 @@ html,
   min-height: 100vh;
 }
 
+.text-color-secondary{
+  color: #fff;
+}
+
 a {
   text-decoration: none;
   color: unset;
@@ -31,6 +35,11 @@ a {
   justify-self: center;
 }
 
+.d-flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .d-flex-center-sb {
   display: flex;
   align-items: center;
@@ -55,6 +64,10 @@ a {
 .py15 {
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+.ml15{
+  margin-left: 15px;
 }
 
 .py30 {

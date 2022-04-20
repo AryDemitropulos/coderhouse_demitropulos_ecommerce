@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 
 import HomePage from "../pages/HomePage";
 import CartPage from "../pages/CartPage";
+import LoginPage from "../pages/LoginPage";
 import ItemDetailPage from "../pages/ItemDetailPage";
 import ItemListContainer from "./itemList/ItemListContainer";
 
@@ -16,6 +17,7 @@ function Main() {
           <Route path="/category/:category" element={<ItemListContainer />} />
           <Route path="items/:id" element={<ItemDetailPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="login" element={<LoginPage />} />
         </Routes>
       </Container>
     </>

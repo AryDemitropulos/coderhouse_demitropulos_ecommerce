@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 import ItemList from "./ItemList";
 import { getItems } from "../../services/itemsService";
+import { errorNotification } from "../../services/notificationService";
 
 const ItemListContainer = () => {
   const loadingProducts = [{}, {}, {}];
@@ -15,11 +16,10 @@ const ItemListContainer = () => {
     setProducts(loadingProducts);
     getItems(category)
       .then((res) => {
-        console.log(res);
         setProducts(res.docs.map((p) => ({ ...p.data(), id: p.id })));
       })
       .catch((error) => {
-        console.log("Error loading products", error);
+        errorNotification(error.message);
       });
   }, [category]);
 

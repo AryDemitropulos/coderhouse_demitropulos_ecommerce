@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { errorNotification } from "../services/notificationService";
 export const context = createContext();
 const { Provider } = context;

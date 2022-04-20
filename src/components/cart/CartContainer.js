@@ -7,32 +7,37 @@ import CartEmpty from "./CartEmpty";
 import { newSale, getSale } from "../../services/salesService";
 import { successNotification } from "../../services/notificationService";
 import SaleInfoDialog from "./SaleInfoDialog";
+import { authContext } from "../../context/AuthContext";
 
 const CartContainer = () => {
   const { cart, getTotal, removeItem, cleanCart } = useContext(context);
+  const { user, isLoggedIn, navigateToLoginAndRedirect } =
+    useContext(authContext);
   const [loading, setLoading] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [saleInfo, setSaleInfo] = useState();
 
   useEffect(() => {
     setOpenDialog(saleInfo !== undefined);
-    console.log("useEffect", saleInfo, openDialog);
   }, [saleInfo]);
 
   const onFinishSale = () => {
+    if (!isLoggedIn) {
+      navigateToLoginAndRedirect("/cart");
+      return;
+    }
     setLoading(true);
     newSale({
-      buyer: { name: "pepito", phone: "test", email: "test@test.com" },
+      buyer: user,
       items: cart,
       date: new Date(),
       total: getTotal(),
     }).then(({ id }) => {
       successNotification("Sale added successfully! Purchase code: " + id);
-      // cleanCart();
+      cleanCart();
       getSale(id).then((res) => {
         setLoading(false);
         setSaleInfo({ ...res.data(), id });
-        console.log("THEN del getSale", saleInfo, openDialog);
       });
     });
   };
@@ -40,7 +45,6 @@ const CartContainer = () => {
   const handleClose = () => {
     setOpenDialog(false);
   };
-  console.log("RAW", openDialog);
 
   return (
     <>

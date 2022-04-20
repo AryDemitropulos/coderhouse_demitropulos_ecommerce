@@ -1,14 +1,17 @@
+import { Link, NavLink } from "react-router-dom";
+import { useContext } from "react";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
+import { authContext } from "../../context/AuthContext";
 import CartWidget from "./CartWidget";
 import UserButton from "./UserButton";
-import { Link, NavLink } from "react-router-dom";
 
 export default function NavBar() {
+  const { user, isLoggedIn } = useContext(authContext);
   return (
     <Box>
       <AppBar position="static">
@@ -39,8 +42,14 @@ export default function NavBar() {
           </Box>
           <Box>
             <CartWidget />
-            <UserButton />
           </Box>
+          {isLoggedIn ? (
+            <UserButton userName={user.name} />
+          ) : (
+            <NavLink to="/login">
+              <Button sx={{ color: "white", display: "block" }}>Login</Button>
+            </NavLink>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
