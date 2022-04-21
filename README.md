@@ -69,6 +69,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 Here's a short demo of how the application works:
 
 
-![purchase demo](https://i.ibb.co/zG7FNy2/ezgif-com-gif-maker.gif)
+![purchase demo](https://i.ibb.co/KWVRVjj/Untitled-2.gif)
 
 
