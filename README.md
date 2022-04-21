@@ -63,3 +63,12 @@ It correctly bundles React in production mode and optimizes the build for the be
 7. If everything is OK, you can procede to finalice the buying, but if you have not logged, you will be redirect to the login page.
 8. In the login page, you can login or create a new account , after any of that options, you will be redirect to the cart page, where you will be able to finalice the bougth
 9. After purchasing the items, a modal will be shown to you with all the sale infomration plus your contact info and a custom code that identifies the sale
+
+
+## Purchase Demo:
+Here's a short demo of how the application works:
+
+
+![purchase demo](https://i.ibb.co/zG7FNy2/ezgif-com-gif-maker.gif)
+
+
